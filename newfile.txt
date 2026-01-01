@@ -1,3 +1,3 @@
 
 Hello world
-SDeting up repository for my Meta Back-end Capstone project 
+Setting up repository for my Meta Back-end Capstone project 
