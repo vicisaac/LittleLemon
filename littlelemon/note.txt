@@ -1,0 +1,2 @@
+super user: vikadmin
+password: admin123
