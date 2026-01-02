@@ -19,6 +19,10 @@ from django.urls import path, include
 from rest_framework import routers
 from restaurant import views
 
+# Initialize the DefaultRouter for User API
+#router = routers.DefaultRouter()
+#router.register(r'users', views.UserViewSet, basename='user')
+
 # Create a separate router for restaurant-related endpoints (like the tables API)
 restaurant_router = routers.DefaultRouter()
 restaurant_router.register(r'tables', views.BookingViewSet, basename='booking')
@@ -31,7 +35,9 @@ urlpatterns = [
     
     # Include router-generated URLs for the 'tables' endpoint under restaurant/
     path('restaurant/booking/', include(restaurant_router.urls)),  # Tables API under 'restaurant/'
-
+    
+    # Include User-related API under 'api-auth/'
+    #path('api-auth/', include(router.urls)),  # Users API under 'api-auth/'
     
     # Include Djoser endpoints for user authentication
     path('auth/', include('djoser.urls')),  # This provides user registration and other related endpoints
