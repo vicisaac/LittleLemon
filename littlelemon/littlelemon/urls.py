@@ -19,13 +19,23 @@ from django.urls import path, include
 from rest_framework import routers
 from restaurant import views
 
+# Initialize the DefaultRouter for User API
 router = routers.DefaultRouter()
-#router.register(r'users', views.UserViewSet)
 router.register(r'users', views.UserViewSet, basename='user')
+
+# Create a separate router for restaurant-related endpoints (like the tables API)
+restaurant_router = routers.DefaultRouter()
+restaurant_router.register(r'tables', views.BookingViewSet, basename='booking')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('restaurant/', include('restaurant.urls')),
-    path('api-auth/', include(router.urls)),
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    
+    # Include URLs from the restaurant app (e.g., for menu or other restaurant views)
+    path('restaurant/', include('restaurant.urls')),  # Keeps the original restaurant URLs
+    
+    # Include router-generated URLs for the 'tables' endpoint under restaurant/
+    path('restaurant/', include(restaurant_router.urls)),  # Tables API under 'restaurant/'
+    
+    # Include User-related API under 'api-auth/'
+    path('api-auth/', include(router.urls)),  # Users API under 'api-auth/'
 ]
