@@ -49,3 +49,8 @@ PUT http://127.0.0.1:8000/restaurant/menu/3/
 
 9. Delete a menu item: 
 DELETE http://127.0.0.1:8000/restaurant/menu/5/
+
+
+python -m venv venv   for virtual environment
+
+source venv/bin/activate  # On Windows: venv\Scripts\activate

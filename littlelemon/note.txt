@@ -1,2 +1,6 @@
 super user: vikadmin
 password: admin123
+
+python -m venv venv   for virtual environment
+
+source venv/bin/activate  # On Windows: venv\Scripts\activate
