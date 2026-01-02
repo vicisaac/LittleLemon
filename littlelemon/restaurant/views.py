@@ -20,10 +20,12 @@ def index(request):
     
 # MenuViewSet handles CRUD operations for the Menu model
 class MenuItemView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]  # Restrict access to authenticated users only
     queryset = Menu.objects.all()  # Get all Menu items
     serializer_class = MenuSerializer  # Use the MenuSerializer for serialization  
     
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]  # Restrict access to authenticated users only
     queryset = Menu.objects.all()  # Get all Menu items
     serializer_class = MenuSerializer  # Use the MenuSerializer for serialization
     lookup_field = 'id'  # Specify that the lookup is by 'id'
