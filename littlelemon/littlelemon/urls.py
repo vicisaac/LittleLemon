@@ -34,7 +34,7 @@ urlpatterns = [
     path('restaurant/', include('restaurant.urls')),  # Keeps the original restaurant URLs
     
     # Include router-generated URLs for the 'tables' endpoint under restaurant/
-    path('restaurant/', include(restaurant_router.urls)),  # Tables API under 'restaurant/'
+    path('restaurant/booking/', include(restaurant_router.urls)),  # Tables API under 'restaurant/'
     
     # Include User-related API under 'api-auth/'
     path('api-auth/', include(router.urls)),  # Users API under 'api-auth/'
